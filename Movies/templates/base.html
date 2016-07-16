@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+  <title>{% block title %}Music Portal{% endblock %}</title>
+</head>
+{% load staticfiles %}
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'logged_in' %}">Media Portal</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="topNavBar">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="{% url 'logged_in' %}">
+            <span class="glyphicon glyphicon-cd" area-hidden="true"></span>&nbsp;
+            Movies
+          </a>
+        </li>
+        <li class="">
+          <a href="#">
+            <span class="glyphicon glyphicon-music" area-hidden="true"></span>&nbsp;
+            Songs
+          </a>
+        </li>
+      </ul>
+
+    <form class="navbar-form navbar-left" action="#" method="get" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" name="q" value="">
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+
+
+
+    </form>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="">
+        <a href="{% url 'log_out' %}">
+          <span class="glyphicon glyphicon-off" area-hidden="true"></span>&nbsp;
+          Logout
+        </a>
+      </li>
+    </ul>
+
+    </div>
+  </div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>

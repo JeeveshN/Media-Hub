@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}{{ movie.Name }}{% endblock %}
+{% block body %}
+<div class="container-fluid songs-container">
+
+    <div class="row">
+
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{% url 'Movies:detail' movie.id %}">
+                        {% if movie.Poster %}
+                            <img src="{{ movie.Poster.url }}" class="img-responsive">
+                        {% else %}
+                            <img src="./static/no-img.jpg" class="img-responsive">
+                        {% endif %}
+                    </a>
+                    <h1>{{ movie.Name }} <small>{{ movie.Year }}</small></h1>
+                    <h2>{{ movie.Director }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Song Info -->
+        <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'Movies:detail' movie.id %}">View All</a></li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5><strong>Year</strong> : {{ movie.Year }}</h5>
+                    <h5><strong>IMDB Rating</strong> : {{ movie.Imdb_rating }}</h5>
+                    <h5><strong>Plot:</strong></h5>
+                    <p>{{ movie.Plot }}</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

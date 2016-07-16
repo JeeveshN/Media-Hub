@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="albums-container container-fluid">
+    <!-- Albums -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>{{ user.username }}'s Movies</h3>
+        </div>
+            {% if movies %}
+                {% for movie in movies %}
+                <div class="col-md-4 col-sm-2">
+                    <div class="thumbnail">
+                      <a href="">
+                         <img src="{{ movie.Poster.url }}" class="img-responsive">
+                     </a>
+                        <div class="caption">
+                            <h2>{{ movie.Name }}</h2>
+                            <h4>{{ movie.Year }}</h4>
+
+                            <!-- View Details -->
+                            <a href="{% url 'Movies:detail' movie.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+                            <!-- Favorite Album -->
+                            <a href="" class="btn btn-default btn-sm btn-favorite" role="button">
+                                <span class="glyphicon glyphicon-star {% if movie.is_favorite %}active{% endif %}"></span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+
+{% endblock %}

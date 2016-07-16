@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Admin Log In</title>
+
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}" />
+
+
+
+</head>
+
+<body>
+
+	<div class="login-page bk-img" style="background-image: url({% static 'img/login.jpg' %});">
+		<div class="form-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<h1 class="text-center text-bold text-light mt-4x">Log In</h1>
+						<div class="well row pt-2x pb-3x bk-light">
+							<div class="col-md-8 col-md-offset-2">
+								{% for message in error_message %}
+								{{ message }}
+								{% endfor %}
+								<form action="{% url 'register' %}" class="mt" method="post">
+                  {% csrf_token %}
+									<label for="username" class="text-uppercase text-sm">Username</label>
+									<input type="text" placeholder="Username" class="form-control mb" name="username">
+
+									<label for="email" class="text-uppercase text-sm">E-mail</label>
+									<input type="text" placeholder="E-mail" class="form-control mb" name="email">
+
+                  <label for="password" class="text-uppercase text-sm">Password</label>
+									<input type="password" placeholder="Password" class="form-control mb" name="password">
+
+                  <label for="password" class="text-uppercase text-sm">Password</label>
+									<input type="password" placeholder="Password" class="form-control mb" name="rep_password">
+
+									<button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="name">
+			<div>Copyright &copy; <span>Jeevesh Narang</span></div>
+	</div>
+
+	<!-- Loading Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
