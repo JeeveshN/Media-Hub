@@ -7,6 +7,7 @@ import imdb
 import re
 import shelve
 import sys
+import itertools
 if os.name=='nt':
     import win32api
 
@@ -14,23 +15,29 @@ VIDEO_FORMATS=('.mp4','.avi','.mkv','.flv')
 
 access = imdb.IMDb()
 
-shelffile=shelve.open('Movies/Data')
-if 'Files' and 'Movies' and 'Paths' not in shelffile.keys():
-    shelffile['Movies']=list()
-    shelffile['Files']=list()
-    shelffile['Paths']=list()
-if shelffile['Movies']:
-    Movies=shelffile['Movies']
+shelffile1=shelve.open('MovieData')
+shelffile2=shelve.open('Path')
+shelffile3=shelve.open('File')
+
+if 'Movies' not in shelffile1.keys():
+    shelffile1['Movies']=list()
+if 'Paths' not in shelffile2.keys():
+    shelffile2['Paths']=list()
+if 'Files' not in shelffile3.keys():
+    shelffile3['Files']=list()
+
+if shelffile1['Movies']:
+    Movies=shelffile1['Movies']
 else:
     Movies=list()
 
-if shelffile['Files']:
-    Files=shelffile['Files']
+if shelffile3['Files']:
+    Files=shelffile3['Files']
 else:
     Files=list()
 
-if shelffile['Paths']:
-    Paths=shelffile['Files']
+if shelffile2['Paths']:
+    Paths=shelffile2['Paths']
 else:
     Paths=list()
 
@@ -76,28 +83,17 @@ def populate(path):
                         Files.append(fil)
                         if re.findall('([0-9]+)',get_imdb_id(fil))[0]!='00000':
                             movie=access.get_movie(re.findall('([0-9]+)',get_imdb_id(fil))[0])
-                            movie:
                             Movies.append(movie)
                             Paths.append(os.path.join(path,filee))
                             print movie
-                        break
-    shelffile['Movies']=Movies
-    shelffile['Files']=Files
-    shelffile['Paths']=Paths
-    shelffile.close()
+                            break
+    shelffile1['Movies']=Movies
+    shelffile3['Files']=Files
+    shelffile2['Paths']=Paths
+    shelffile1.close()
+    shelffile2.close()
+    shelffile3.close()
 
-"""
-id=get_imdb_id('Underworld')
-id=re.findall('([0-9]+)',id)
-print id
-access=imdb.IMDb()
-movie=access.get_movie(id[0])
-print movie['year']
-d=''.join(movie['plot'])
-print d
-for name in movie['director']:
-    print name
-"""
 if len(sys.argv) < 2:
     print "USAGE: python populate.py 'Drive Path'"
     print "NOTE: If not path is given the whole hard drive would be scanned(Take a Lot Of Time) suggested: Specify path "

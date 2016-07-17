@@ -26,13 +26,14 @@
         <div class="col-sm-8 col-md-9">
 
             <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                <li role="presentation" class="active"><a href="{% url 'Movies:detail' movie.id %}">View All</a></li>
+                <li role="presentation" class="active"><a href="{% url 'index' %}">Back</a></li>
             </ul>
 
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h5><strong>Year</strong> : {{ movie.Year }}</h5>
                     <h5><strong>IMDB Rating</strong> : {{ movie.Imdb_rating }}</h5>
+                    <h5><strong>Genre</strong> : {{ movie.Genre }}</h5>
                     <h5><strong>Plot:</strong></h5>
                     <p>{{ movie.Plot }}</p>
                 </div>

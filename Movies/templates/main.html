@@ -10,14 +10,18 @@
             {% if movies %}
                 {% for movie in movies %}
                 <div class="col-md-4" >
-                    <div class="thumbnail">
+                    <div class="thumbnail" style="height:720px">
                       <a href="{% url 'Movies:detail' movie.id %}">
+                        {% if movie.Poster %}
                          <img src="{{ movie.Poster.url }}" class="img-responsive" style="max-height:440px">
+                         {% else %}
+                         <img src="../static/img/no-poster.png" class="img-responsive" style="max-height:440px">
+                         {% endif %}
                      </a>
                         <div class="caption">
                             <h3>{{ movie.Name }}</h3>
                             <h4>{{ movie.Year }}</h4>
-
+                            <p>{{ movie.Plot_outline }}</p>
                             <!-- View Details -->
                             <a href="{% url 'Movies:detail' movie.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
                             <!-- Favorite Album -->
