@@ -4,15 +4,15 @@
 <div class="albums-container container-fluid">
     <!-- Albums -->
     <div class="row">
-        <div class="col-sm-12">
+        <!--<div class="col-sm-12">
             <h3>{{ user.username }}'s Movies</h3>
-        </div>
+        </div>-->
             {% if movies %}
                 {% for movie in movies %}
-                <div class="col-md-4 col-sm-2">
-                    <div class="thumbnail">
-                      <a href="">
-                         <img src="{{ movie.Poster.url }}" class="img-responsive">
+                <div class="col-md-4">
+                    <div class="thumbnail" style="height:300px">
+                      <a href="{% url 'Movies:detail' movie.id %}">
+                         <img src="{{ movie.Poster.url }}" >
                      </a>
                         <div class="caption">
                             <h2>{{ movie.Name }}</h2>
@@ -28,11 +28,12 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+                {% endif %}
 
               </div>
             </div>
-            {% endfor %}
-            {% endif %}
+
 
 
 {% endblock %}
