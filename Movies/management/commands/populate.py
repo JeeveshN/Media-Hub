@@ -9,7 +9,7 @@ import urllib
 class Command(BaseCommand):
 
     def handle(self,*arg,**options):
-        SFile=shelve.open('Data')
+        SFile=shelve.open('MovieData')
         Shelf=shelve.open('Path')
         for (movie,path) in zip(SFile['Movies'],Shelf['Paths']):
             mov=Movie()
