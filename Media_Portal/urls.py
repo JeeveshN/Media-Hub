@@ -15,7 +15,9 @@ urlpatterns = [
     #logged_in/
     url(r'^logged_in/$',views.logged_in,name="logged_in"),
 
-    url(r'^logged_out/$',views.log_out,name="log_out")
+    url(r'^logged_out/$',views.log_out,name="log_out"),
+
+    url(r'^search/$',views.search_movie,name="search"),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

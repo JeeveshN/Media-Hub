@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="albums-container container-fluid">
+<div class="container-fluid">
     <!-- Albums -->
     <div class="row">
         <!--<div class="col-sm-12">
@@ -9,13 +9,13 @@
         </div>-->
             {% if movies %}
                 {% for movie in movies %}
-                <div class="col-md-4">
-                    <div class="thumbnail" style="height:300px">
+                <div class="col-md-4" >
+                    <div class="thumbnail">
                       <a href="{% url 'Movies:detail' movie.id %}">
-                         <img src="{{ movie.Poster.url }}" >
+                         <img src="{{ movie.Poster.url }}" class="img-responsive" style="max-height:440px">
                      </a>
                         <div class="caption">
-                            <h2>{{ movie.Name }}</h2>
+                            <h3>{{ movie.Name }}</h3>
                             <h4>{{ movie.Year }}</h4>
 
                             <!-- View Details -->

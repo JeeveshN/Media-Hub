@@ -66,3 +66,18 @@ def detail(request,movie_id):
         return redirect('logged_in')
     movie=get_object_or_404(Movie,id=movie_id)
     return render(request,'details.html',{'movie':movie})
+
+def search_movie(request):
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            if not request.POST['search']:
+                return redirect('logged_in')
+            list1=Movie.objects.filter(Name__contains=request.POST['search'])
+            list2=Movie.objects.filter(Year__contains=request.POST['search'])
+            list3=Movie.objects.filter(Genre__contains=request.POST['search'])
+            res=list(set(list1)^set(list2)^set(list3))
+            context={
+                'movies':res,
+            }
+            return render(request,'main.html',context)
+    return redirect('logged_in')

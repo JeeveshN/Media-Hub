@@ -1,11 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Satisfy:100,200,400);
 body{
-  background: white url("images/")
+  background: white url("../img/background.png")
 }
 .navbar {
   border-radius: 0;
 }
 .navbar-brand{
   font-family: 'Satisfy',fantasy;
-  
+
 }
