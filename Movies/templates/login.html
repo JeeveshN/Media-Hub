@@ -30,7 +30,7 @@
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 								{% for message in error_message %}
-								{{ message }}
+								<h5>{{ message }}<h5>
 								{% endfor %}
 								<form action="{% url 'logged_in' %}" class="mt" method="post">
 									{% csrf_token %}
@@ -41,6 +41,8 @@
 									<input type="password" placeholder="Password" class="form-control mb" name="password">
 									<button class="btn btn-primary btn-block" type="submit">LOGIN</button>
 								</form>
+								<br>
+								<a href="{% url 'register' %}"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></a>
 							</div>
 						</div>
 					</div>
