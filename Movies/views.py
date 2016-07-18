@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 
 from .models import Movie
+import os
 
 def index(request):
     if 'user' in request.session:
@@ -80,4 +81,10 @@ def search_movie(request):
                 'movies':res,
             }
             return render(request,'main.html',context)
+    return redirect('logged_in')
+def Play_movie(request,movie_id):
+    if request.user.is_authenticated():
+        movie=get_object_or_404(Movie,id=movie_id)
+        os.system('xdg-open '+'"'+movie.Path+'"')
+        return render(request,'details.html',{'movie':movie})
     return redirect('logged_in')

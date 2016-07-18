@@ -6,6 +6,7 @@ app_name='Movies'
 urlpatterns = [
     #movies/<movie_id>
     url(r'^(?P<movie_id>[0-9]+)/$',views.detail,name="detail"),
-    #movies/search
-    #url(r'^search/^$',views.search,name="search"),
+    #movies/<movie_id>/play/
+    url(r'^(?P<movie_id>[0-9]+)/play/$',views.Play_movie,name="play"),
+
 ]
