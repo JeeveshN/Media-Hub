@@ -37,3 +37,11 @@ Click on any Movie to know more **Details** or **Play** it.
 
 **Search:** User can also search movies based on Title,Year and Genre
 
+##Admin Access
+Movies can be deleted or edited through the admin panel at **127.0.0.1:8000/admin**
+But for that you will need to set up a superuser
+
+```
+python manage.py createsuperuser
+```
+And now you can delete or edit movies from the admin panel using the username and password you set. 
