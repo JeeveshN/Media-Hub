@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Admin Log In</title>
+	<title>Media Portal-Log In</title>
 
 	{% load staticfiles %}
 	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
@@ -29,9 +29,9 @@
 						<h1 class="text-center text-bold text-light mt-4x">Log In</h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
-								{% for message in error_message %}
-								<h5>{{ message }}<h5>
-								{% endfor %}
+								{% if error_message %}
+								{{ error_message }}
+								{% endif %}
 								<form action="{% url 'logged_in' %}" class="mt" method="post">
 									{% csrf_token %}
 									<label for="username" class="text-uppercase text-sm">Your Username</label>
@@ -39,7 +39,7 @@
 
 									<label for="password" class="text-uppercase text-sm">Password</label>
 									<input type="password" placeholder="Password" class="form-control mb" name="password">
-									<button class="btn btn-primary btn-block" type="submit">LOGIN</button>
+									<button class="btn btn-primary btn-block" type="submit">Login</button>
 								</form>
 								<br>
 								<a href="{% url 'register' %}"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></a>
