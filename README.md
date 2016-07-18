@@ -19,7 +19,7 @@ This file is then accesed by populate command which then populates the database 
   
 **Note:**  
 1. Once Shelf.py starts indexing do not stop the program or else next time it'll start indexing from the start.The     process will take a lot of time depending upon movie files present in the specified directory and the net speed.    
-**(Can run it multiple times on different directories before proceeding to next step too)**  
+**(Can run it multiple times on smaller directories before proceeding to next step too)**  
 2.The populate command will take time depending on net speed as it fetches movie Posters.This task need not be done in one go you can stop the program and when you run it again it will not process movies that have already been put in Database.
 
 ##Let's Start
@@ -35,4 +35,5 @@ Click on any Movie to know more **Details** or **Play** it.
 
 ![](/extras/details.png?raw=true)
 
-It takes a little time to set it up but after it is up selecting a movie to watch would be a piece of cake.
+**Search:** User can also search movies based on Title,Year and Genre
+
