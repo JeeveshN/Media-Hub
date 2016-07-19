@@ -13,7 +13,7 @@ class Movie(models.Model):
     Director=models.CharField(max_length=50,default=None)
     Poster=models.FileField()
     Path=models.CharField(max_length=100)
-    is_favorite=models.BooleanField(default=False)
+    Watched=models.BooleanField(default=False)
 
     def __str__(self):
         return self.Name

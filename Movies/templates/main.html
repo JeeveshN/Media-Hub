@@ -25,8 +25,8 @@
                             <!-- View Details -->
                             <a href="{% url 'Movies:detail' movie.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
                             <!-- Favorite Album -->
-                            <a href="" class="btn btn-default btn-sm btn-favorite" role="button">
-                                <span class="glyphicon glyphicon-star {% if movie.is_favorite %}active{% endif %}"></span>
+                            <a href="{% url 'Movies:watched' movie.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
+                                <span class="glyphicon glyphicon-star{% if not movie.Watched %}-empty{% endif %}"></span>
                             </a>
 
                         </div>

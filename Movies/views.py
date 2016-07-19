@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 from .models import Movie
 import os
+import re
 
 def index(request):
     if 'user' in request.session:
@@ -73,9 +74,21 @@ def search_movie(request):
         if request.method == 'POST':
             if not request.POST['search']:
                 return redirect('logged_in')
-            list1=Movie.objects.filter(Name__contains=request.POST['search'])
-            list2=Movie.objects.filter(Year__contains=request.POST['search'])
-            list3=Movie.objects.filter(Genre__contains=request.POST['search'])
+            if '-w' in request.POST['search']:
+                Q=re.findall('(.*)\s+-w',request.POST['search'])
+                if not Q:
+                    movies=Movie.objects.filter(Watched=False)
+                    return render(request,'main.html',{'movies':movies})
+                else:
+                    Q=Q[0]
+                    list1=Movie.objects.filter(Name__contains=Q,Watched=False)
+                    list2=Movie.objects.filter(Year__contains=Q,Watched=False)
+                    list3=Movie.objects.filter(Genre__contains=Q,Watched=False)
+            else:
+                Q=request.POST['search']
+                list1=Movie.objects.filter(Name__contains=Q)
+                list2=Movie.objects.filter(Year__contains=Q)
+                list3=Movie.objects.filter(Genre__contains=Q)
             res=list(set(list1)^set(list2)^set(list3))
             context={
                 'movies':res,
@@ -87,4 +100,14 @@ def Play_movie(request,movie_id):
         movie=get_object_or_404(Movie,id=movie_id)
         os.system('xdg-open '+'"'+movie.Path+'"')
         return render(request,'details.html',{'movie':movie})
+    return redirect('logged_in')
+
+def Watched(request,movie_id):
+    if request.user.is_authenticated():
+        movie=get_object_or_404(Movie,id=movie_id)
+        if movie.Watched:
+            movie.Watched=False
+        else:
+            movie.Watched=True
+        movie.save()
     return redirect('logged_in')

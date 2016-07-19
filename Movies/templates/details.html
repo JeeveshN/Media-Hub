@@ -27,11 +27,19 @@
 
             <ul class="nav nav-pills" style="margin-bottom: 10px;">
                 <li role="presentation" class="active"><a href="{% url 'index' %}">Back</a></li>
-                <li role="presentation" class="active"><a href="{% url 'Movies:play' movie.id %}">Play Movie</a></li>
+                <li role="presentation" class="active"><a href="{% url 'Movies:watched' movie.id %}">
+                  {% if movie.Watched %}
+                  Mark Unwatched
+                  {% else %}
+                  Mark Watched
+                  {% endif %}
+                </a></li>
+                <li role="presentation" class="active pull-right"><a href="{% url 'Movies:play' movie.id %}">Play Movie</a></li>
             </ul>
 
             <div class="panel panel-default">
                 <div class="panel-body">
+                    <h5><strong>Watched</strong> :{% if movie.Watched %}Yes{% else %}No{% endif %}</h5>
                     <h5><strong>Year</strong> : {{ movie.Year }}</h5>
                     <h5><strong>IMDB Rating</strong> : {{ movie.Imdb_rating }}</h5>
                     <h5><strong>Genre</strong> : {{ movie.Genre }}</h5>
