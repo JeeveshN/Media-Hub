@@ -35,7 +35,12 @@ Click on any Movie to know more **Details** or **Play** it.
 
 ![](/extras/details.png?raw=true)
 
-**Search:** User can also search movies based on Title,Year and Genre
+Users can watch/unwatch movies also and then filter their results based on it too.
+
+**Search:**  
+User can search movies based on Title,Year and Genre.  
+Add **-w** after the search item and the search would give results filtering through all the **unwatched movies**.  
+Only **-w** without any search item will display all the **unwatched movies**.
 
 ##Admin Access
 Movies can be deleted or edited through the admin panel at **127.0.0.1:8000/admin**
