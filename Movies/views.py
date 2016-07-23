@@ -111,3 +111,14 @@ def Watched(request,movie_id):
             movie.Watched=True
         movie.save()
     return redirect('logged_in')
+
+def Watched_stay(request,movie_id):
+    if request.user.is_authenticated():
+        movie=get_object_or_404(Movie,id=movie_id)
+        if movie.Watched:
+            movie.Watched=False
+        else:
+            movie.Watched=True
+        movie.save()
+        return render(request,'details.html',{'movie':movie})
+    return redirect('logged_in')

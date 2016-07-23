@@ -27,7 +27,7 @@
 
             <ul class="nav nav-pills" style="margin-bottom: 10px;">
                 <li role="presentation" class="active"><a href="{% url 'index' %}">Back</a></li>
-                <li role="presentation" class="active"><a href="{% url 'Movies:watched' movie.id %}">
+                <li role="presentation" class="active"><a href="{% url 'Movies:watched_stay' movie.id %}">
                   {% if movie.Watched %}
                   Mark Unwatched
                   {% else %}
