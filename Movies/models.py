@@ -14,6 +14,7 @@ class Movie(models.Model):
     Poster=models.FileField()
     Path=models.CharField(max_length=100)
     Watched=models.BooleanField(default=False)
+    trailer=models.CharField(max_length=150,default=None,null=True,blank=True)
 
     def __str__(self):
         return self.Name

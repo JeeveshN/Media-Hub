@@ -13,7 +13,7 @@
                         {% if movie.Poster %}
                             <img src="{{ movie.Poster.url }}" class="img-responsive">
                         {% else %}
-                            <img src="./static/no-img.jpg" class="img-responsive">
+                            <img src="/static/img/no-img.jpg" class="img-responsive">
                         {% endif %}
                     </a>
                     <h2>{{ movie.Name }} <small>{{ movie.Year }}</small></h2>
@@ -45,7 +45,19 @@
                     <h5><strong>Genre</strong> : {{ movie.Genre }}</h5>
                     <h5><strong>Plot:</strong></h5>
                     <p>{{ movie.Plot }}</p>
-                </div>
+                    {% if movie.trailer %}
+                    <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embeded-responsive-item" src="{{movie.trailer}}" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                    {% else %}
+                    <div style="height:480px;width:854;background-color:white;">
+                      <div style="margin-top:30px">
+                      <img src="/static/img/no.gif"/>
+                      <div>
+                    </div>
+                    {% endif %}
+                  </div>
+
             </div>
 
         </div>
