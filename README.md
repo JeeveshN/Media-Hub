@@ -24,10 +24,10 @@ This file is then accesed by populate command which then populates the database 
 
 ##Let's Start
 ```
-python manage.py runserver
+python manage.py runserver or python manage.py runserver 0.0.0.0:8000
 go to 127.0.0.1:8000
 ```
-
+**By using runserver 0.0.0.0:8000 user can access it from any device connected to the same network** 
 ##Demo:
 ![](/extras/main.png?raw=true)
 
@@ -50,3 +50,15 @@ But for that you will need to set up a superuser
 python manage.py createsuperuser
 ```
 And now you can delete or edit movies from the admin panel using the username and password you set. 
+
+##API
+This allows user to get get relevent movie information in form of JSON.
+All requests should be made to:
+`127.0.0.1:8000/movies/api`  
+Movies data can be requested based on ***Name*** or ***Year*** or both.  
+`127.0.0.1:8000/movies/api/name=nm&y=yr`  
+Both these parameters are optional
+###Request: **http://127.0.0.1:8000/movies/api/name=&y=2010**  
+###Response:
+![](/extras/api.png?raw=true)
+
