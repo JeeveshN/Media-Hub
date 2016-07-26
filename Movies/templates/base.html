@@ -6,8 +6,6 @@
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'css/Bootstrap.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script
 
 <body>
 <nav class="navbar navbar-inverse">
@@ -58,4 +56,8 @@
 {% block body %}
 {% endblock %}
 </body>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block script %}
+{% endblock %}
 </html>
