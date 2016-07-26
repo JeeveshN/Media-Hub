@@ -3,14 +3,13 @@
 {% block body %}
 <div class="container-fluid">
     <!-- Albums -->
+    {% if movies %}
+        {% for movie in movies %}
+        {% if forloop.counter|divisibleby:'3' or forloop.counter == 1 %}
     <div class="row">
-        <!--<div class="col-sm-12">
-            <h3>{{ user.username }}'s Movies</h3>
-        </div>-->
-            {% if movies %}
-                {% for movie in movies %}
+      {% endif %}
                 <div class="col-md-4" >
-                    <div class="thumbnail" style="height:720px">
+                    <div class="thumbnail">
                       <a href="{% url 'Movies:detail' movie.id %}">
                         {% if movie.Poster %}
                          <img src="{{ movie.Poster.url }}" class="img-responsive" style="max-height:440px">
@@ -32,10 +31,12 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-                {% endif %}
 
+              {% if forloop.counter|divisibleby:'3' %}
               </div>
+              {% endif %}
+              {% endfor %}
+              {% endif %}
             </div>
 
 
