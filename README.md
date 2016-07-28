@@ -1,5 +1,7 @@
 # Media-Hub
 A Django based Web application that indexes all movies in your computer and fetches information from Imdb and save it in a Database.  
+It also fetches a **Youtube Trailer** link for the movie.
+  
 **After initial setup requires no internet connection can be accesed when offline.**
 
 ###Installations
@@ -31,7 +33,9 @@ go to 127.0.0.1:8000
 ##Demo:
 ![](/extras/main.png?raw=true)
 
-Click on any Movie to know more **Details** or **Play** it.
+Click on any Movie to know more **Details** or **Play** it or ***Watch Trailer***.  
+  
+Its your own personalized **IMdb** and **Youtube** for movies.
 
 ![](/extras/details.png?raw=true)
 
