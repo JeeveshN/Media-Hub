@@ -8,6 +8,11 @@
 body{
   background: white url("../img/background.png")
 }
+.fix{
+  position:fixed;
+  width: 100%;
+  z-index: 1000;
+}
 .navbar {
   border-radius: 0;
 }
