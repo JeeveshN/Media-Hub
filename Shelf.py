@@ -95,8 +95,8 @@ def populate(path):
     shelffile3.close()
 
 if len(sys.argv) < 2:
-    print "USAGE: python populate.py 'Drive Path'"
-    print "NOTE: If not path is given the whole hard drive would be scanned(Take a Lot Of Time) suggested: Specify path "
+    print "USAGE: python Shelf.py 'Drive Path'"
+    print "NOTE: If no path is given the whole hard drive would be scanned(Take a Lot Of Time) suggested: Specify path "
     print "1.Exit and start again with Path specified"
     print "2.Scan the whole hard drive"
     choice=raw_input()
